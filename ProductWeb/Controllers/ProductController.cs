@@ -16,14 +16,22 @@ namespace ProductWeb.Controllers
 
             ProductServiceClient client = new ProductServiceClient();
 
-            GetProductRequest productRequest = new GetProductRequest();
-            productRequest.productId = 1;
+            GetAllProductsRequest getAllProductsRequest = new GetAllProductsRequest();
 
-            Task<GetProductResponse> response = client.GetProductAsync(productRequest);
-            GetProductResponse productResponse = response.Result;
+            Task<GetAllProductsResponse> response = client.GetAllProductsAsync(getAllProductsRequest);
 
-            ProductWeb.Models.Product product = new ProductWeb.Models.Product(1, productResponse.GetProductResult.Title);
-            return View(product);
+            GetAllProductsResponse productResponseList = response.Result;
+            List<ProductWeb.Models.Product> productList = new List<ProductWeb.Models.Product>();
+
+            foreach (Product.API.Product product in productResponseList.GetAllProductsResult)
+            {
+                ProductWeb.Models.Product tmpProduct = new ProductWeb.Models.Product(product.ProductId, product.Title);
+                productList.Add(tmpProduct);
+            }
+
+
+
+            return View(productList);
         }
 
         // GET: ProductController/Details/5

@@ -54,6 +54,9 @@ namespace Product.API
     public interface IProductService
     {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetAllProducts", ReplyAction="http://tempuri.org/IProductService/GetAllProductsResponse")]
+        System.Threading.Tasks.Task<GetAllProductsResponse> GetAllProductsAsync(GetAllProductsRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProduct", ReplyAction="http://tempuri.org/IProductService/GetProductResponse")]
         System.Threading.Tasks.Task<GetProductResponse> GetProductAsync(GetProductRequest request);
         
@@ -65,6 +68,36 @@ namespace Product.API
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/DeleteProduct", ReplyAction="http://tempuri.org/IProductService/DeleteProductResponse")]
         System.Threading.Tasks.Task<DeleteProductResponse> DeleteProductAsync(DeleteProductRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetAllProducts", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetAllProductsRequest
+    {
+        
+        public GetAllProductsRequest()
+        {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetAllProductsResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetAllProductsResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public Product[] GetAllProductsResult;
+        
+        public GetAllProductsResponse()
+        {
+        }
+        
+        public GetAllProductsResponse(Product[] GetAllProductsResult)
+        {
+            this.GetAllProductsResult = GetAllProductsResult;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -267,6 +300,11 @@ namespace Product.API
         public ProductServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
+        }
+        
+        public System.Threading.Tasks.Task<GetAllProductsResponse> GetAllProductsAsync(GetAllProductsRequest request)
+        {
+            return base.Channel.GetAllProductsAsync(request);
         }
         
         public System.Threading.Tasks.Task<GetProductResponse> GetProductAsync(GetProductRequest request)
