@@ -21,12 +21,17 @@ namespace ProductWeb.Services
 
             foreach (Product.API.Product product in productResponseList.GetAllProductsResult)
             {
-                ProductWeb.Models.Product tmpProduct = new ProductWeb.Models.Product(product.ProductId, product.Title);
+                ProductWeb.Models.Product tmpProduct = this.mapAPIProduct2WebProduct(product);
                 productList.Add(tmpProduct);
             }
 
             return productList;
 
+        }
+
+        private ProductWeb.Models.Product mapAPIProduct2WebProduct(Product.API.Product apiProduct)
+        {
+            return new ProductWeb.Models.Product(apiProduct.ProductId, apiProduct.Title);
         }
     }
 }
