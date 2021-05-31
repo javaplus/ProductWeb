@@ -10,26 +10,18 @@ namespace ProductWeb.Controllers
 {
     public class ProductController : Controller
     {
+        private ProductWeb.Services.ProductService _productService;
+
+        public ProductController()
+        {
+            _productService = new ProductWeb.Services.ProductService();
+        }
+
         // GET: ProductController
         public ActionResult Index()
         {
 
-            ProductServiceClient client = new ProductServiceClient();
-
-            GetAllProductsRequest getAllProductsRequest = new GetAllProductsRequest();
-
-            Task<GetAllProductsResponse> response = client.GetAllProductsAsync(getAllProductsRequest);
-
-            GetAllProductsResponse productResponseList = response.Result;
-            List<ProductWeb.Models.Product> productList = new List<ProductWeb.Models.Product>();
-
-            foreach (Product.API.Product product in productResponseList.GetAllProductsResult)
-            {
-                ProductWeb.Models.Product tmpProduct = new ProductWeb.Models.Product(product.ProductId, product.Title);
-                productList.Add(tmpProduct);
-            }
-
-
+            List<ProductWeb.Models.Product> productList = _productService.getAllProducts();
 
             return View(productList);
         }
