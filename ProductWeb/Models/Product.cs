@@ -13,10 +13,13 @@ namespace ProductWeb.Models
         double price;
         double cost;
 
-        public Product(int id, String title)
+        public Product(int id, String title, String theDescription, double thePrice, double theCost)
         {
             this.productId = id;
             this.title = title;
+            this.description = theDescription;
+            this.cost = theCost;
+            this.price = thePrice;
         }
 
         public int ProductId
@@ -29,6 +32,23 @@ namespace ProductWeb.Models
         {
             get { return title; }
             set { title = value; }
+        }
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
+        public double Cost
+        {
+            get { return cost; }
+            set { cost = value; }
+        }
+
+        public double Price
+        {
+            get { return price; }
+            set { price = value; }
         }
     }
 }

@@ -18,9 +18,54 @@ namespace Product.API
     public partial class Product : object
     {
         
+        private double CostField;
+        
+        private string DescriptionField;
+        
+        private double PriceField;
+        
         private int ProductIdField;
         
         private string TitleField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Cost
+        {
+            get
+            {
+                return this.CostField;
+            }
+            set
+            {
+                this.CostField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description
+        {
+            get
+            {
+                return this.DescriptionField;
+            }
+            set
+            {
+                this.DescriptionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Price
+        {
+            get
+            {
+                return this.PriceField;
+            }
+            set
+            {
+                this.PriceField = value;
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int ProductId

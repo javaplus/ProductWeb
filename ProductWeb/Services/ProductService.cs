@@ -31,7 +31,7 @@ namespace ProductWeb.Services
 
         private ProductWeb.Models.Product mapAPIProduct2WebProduct(Product.API.Product apiProduct)
         {
-            return new ProductWeb.Models.Product(apiProduct.ProductId, apiProduct.Title);
+            return new ProductWeb.Models.Product(apiProduct.ProductId, apiProduct.Title, apiProduct.Description, apiProduct.Price, apiProduct.Cost);
         }
     }
 }
