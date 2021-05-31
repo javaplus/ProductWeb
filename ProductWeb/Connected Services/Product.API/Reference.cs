@@ -400,7 +400,8 @@ namespace Product.API
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IProductService))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:54035/ProductService.svc");
+                //return new System.ServiceModel.EndpointAddress("http://localhost:54035/ProductService.svc");
+                return new System.ServiceModel.EndpointAddress("http://localhost:9090/soap/Products");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
