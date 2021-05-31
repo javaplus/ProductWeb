@@ -10,9 +10,12 @@ namespace ProductWeb.Controllers
 {
     public class HomeController : Controller
     {
+
+        private ProductWeb.Services.BibleService _bibleService = new ProductWeb.Services.BibleService();
         public IActionResult Index()
         {
-            return View();
+            BibleVerse bibleVerse = _bibleService.getJohn316();
+            return View(bibleVerse);
         }
 
         public IActionResult About()

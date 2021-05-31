@@ -11,10 +11,12 @@ namespace ProductWeb.Controllers
     public class ProductController : Controller
     {
         private ProductWeb.Services.ProductService _productService;
+       
 
         public ProductController()
         {
             _productService = new ProductWeb.Services.ProductService();
+            
         }
 
         // GET: ProductController

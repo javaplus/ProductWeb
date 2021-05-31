@@ -1,9 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@model ProductWeb.Models.BibleVerse
 <div class="row">
     <div class="col-md-3">
+        <h1>Bible verse of the Day</h1>
+        <p>@Model.Text</p>
         <h2>Want to see some Products?</h2>
         <ul>
             <li>Click here to go to the <a href="/Product">Product Page</a></li>
